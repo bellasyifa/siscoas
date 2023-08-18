@@ -19,42 +19,23 @@
                                 <table id="datatablesSimple" class="table">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>No</th>
+                                            <th>Semester</th>
+                                            <th>Mata Kuliah</th>
+                                            <th>Kelas</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
+                                    {{-- ini untuk menampilkan data yang ada di table subjects --}}
+                                    @foreach ($subjects as $subject) 
                                     <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td> {{ $subject->semester }} </td>
+                                            <td> {{ $subject->subject_name }} </td>
+                                            <td> {{ $subject->class }} </td>
                                         </tr>
                                     </tbody>
+                                    @endforeach
                                 </table>       
         </main>
       @endsection

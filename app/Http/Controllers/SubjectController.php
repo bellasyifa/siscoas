@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Subject;
 
 class SubjectController extends Controller
 {
@@ -13,7 +14,9 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('admin.subject.index');
+        // ini adalah untuk mengirim data dari table subjects ke view
+        $subjects = Subject::All();
+        return view('admin.subject.index', compact('subjects'));
     }
 
     /**
