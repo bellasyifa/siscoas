@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Coas;
 
 class CoasController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('admin.coas.index');
+        $coas = Coas::all();
+        return view('admin.coas.index',compact('coas'));
     }
 
     /**

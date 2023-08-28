@@ -19,9 +19,22 @@ use App\Http\Controllers\FormController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/schedule', [ScheduleController::class, 'index']);
+Route::post('/schedule', [ScheduleController::class, 'index']);
+
+
 Route::get('/student', [StudentController::class, 'index']);
+Route::post('/form/store', [StudentController::class, 'store'])->name('students.store');
+
+
 Route::get('/subject', [SubjectController::class, 'index']);
+
+
+
 Route::get('/coas', [CoasController::class, 'index']);
+
+
+
+
 Route::get('/form', [FormController::class, 'index']);
+Route::post('/submission/store', [FormController::class, 'store'])->name('submit.store');
 

@@ -51,19 +51,19 @@
                                 </a>
                                 <!--  -->
                                 <div class="sb-sidenav-menu-heading">Menu</div>
-                                <a class="nav-link" href="charts.html">
+                                <a class="nav-link" href="/schedule">
                                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                     Jadwal
                                 </a>
-                                <a class="nav-link" href="tables.html">
+                                <a class="nav-link" href="/student">
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                     Data Mahasiswa
                                 </a>
-                                <a class="nav-link" href="tables.html">
+                                <a class="nav-link" href="/subject">
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                     Mata Kuliah
                                 </a>
-                                <a class="nav-link" href="tables.html">
+                                <a class="nav-link" href="/coas">
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                     Daftar COAS
                                 </a>
@@ -72,7 +72,7 @@
 
                         <div class="sb-sidenav-footer">
                             <div class="small">Logged in as:</div>
-                            Start Bootstrap
+                            Admin
                         </div>
                     </nav>
                 </div>

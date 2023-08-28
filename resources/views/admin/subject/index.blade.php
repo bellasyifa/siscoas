@@ -11,9 +11,9 @@
     <main>
       @section('content')
             
-                <h1 class="mt-4">Subjects</h1>
+                <h1 class="mt-4">Mata Kuliah</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Subjects</li>
+                    <li class="breadcrumb-item active">Mata Kuliah</li>
                 </ol>
               
                                 <table id="datatablesSimple" class="table">

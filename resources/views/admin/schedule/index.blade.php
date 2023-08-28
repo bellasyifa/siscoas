@@ -13,9 +13,9 @@
       <main>
     @section('content')
           
-              <h1 class="mt-4">Schedules</h1>
+              <h1 class="mt-4">Jadwal</h1>
               <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item active">Schedules</li>
+                  <li class="breadcrumb-item active">Jadwal COAS</li>
               </ol>
             
                               <table id="datatablesSimple" class="table">

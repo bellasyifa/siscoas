@@ -11,50 +11,38 @@
     <main>
       @section('content')
             
-                <h1 class="mt-4">Students</h1>
+                <h1 class="mt-4">Mahasiswa</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Students</li>
+                    <li class="breadcrumb-item active">Data Mahasiswa Calon COAS</li>
                 </ol>
               
                                 <table id="datatablesSimple" class="table">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Id</th>
+                                            <th>NRP</th>
+                                            <th>Nama</th>
+                                            <th>Kelas</th>
+                                            <th>Mata Kuliah</th>
+                                            <th>Hari</th>
+                                            <th>Jam</th>
+                                            <th>Email</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
+                                    @foreach ($students as $student)
+                                        
                                     <tbody>
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
-                                        <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
-                                            <td>27</td>
-                                            <td>2011/01/25</td>
-                                            <td>$112,000</td>
-                                        </tr>
+                                        
                                     </tbody>
+                                    @endforeach
                                 </table>       
         </main>
       @endsection

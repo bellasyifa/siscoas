@@ -20,12 +20,24 @@
     <link rel="stylesheet" href="assets/css/demo.css">
 </head>
 <body>
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
     <main>
+        
         <article>
             <!-- Start Multiform HTML -->
             <section class="multi_step_form">
-                <form id="msform" action>
-                    <!-- Tittle -->
+                <form action="{{ route('submit.store') }}"  id="msform" method="post">
+                    @csrf
                     <div class="tittle">
                         <h2>Pengajuan COAS</h2>
                         <p>Pastikan Mengisi Data Dengan Benar</p>
@@ -41,16 +53,20 @@
                         <h3>Data Diri</h3>
                         <h6>Lengkapi Data Diri Anda</h6>
                         <div class="form-group fg_2 mb-3">
-                            <label for="exampleInputEmail1">NRP</label>
-                            <input type="text" class="form-control" placeholder="Masukkan NRP Anda">
+                            <label for="nrp">NRP</label>
+                            <input type="text" class="form-control" placeholder="Masukkan NRP Anda" id="nrp" name="nrp">
                         </div>
                         <div class="form-group fg_2 mb-3">
-                            <label for="exampleInputEmail1">Nama Lengkap</label>
-                            <input type="text" class="form-control" placeholder="Isi Dengan Nama Lengkap">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" class="form-control" placeholder="Isi Dengan Nama Lengkap" id="name" name="name">
+                        </div>
+                        <div class="form-group fg_2 mb-3">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" placeholder="Isi Dengan Email Anda" id="email" name="email">
                         </div>
                         <div class="">
-                            <label for="exampleInputEmail1 mb-3">Kelas</label>
-                            <select class="product_select">
+                            <label for="class mb-3">Kelas</label>
+                            <select class="product_select" id="class" name="class">
                                 <option data-display="Pilih Kelas"></option>
                                 <option>2IF01</option>
                                 <option>2IF02</option>
@@ -58,38 +74,14 @@
                             </select>
                         </div>
                        
-                        <div class="form-group mb-3">
-                            <label>Mata Kuliah COAS</label>
-                            <div class="checkbox-group">
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Matematika Diskrit"> Pemrograman Web
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Algoritma dan Struktur Data"> Visualisasi Data
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Pemrograman Web"> Aplikasi Bisnis
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Jaringan Komputer"> Jaringan Komputer
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Jaringan Komputer"> Jaringan Komputer
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Jaringan Komputer"> Jaringan Komputer
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Jaringan Komputer"> Jaringan Komputer
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Jaringan Komputer"> Jaringan Komputer
-                                </label>
-                                <label>
-                                    <input type="checkbox" name="coasSubjects" value="Jaringan Komputer"> Jaringan Komputer
-                                </label>
-                                <!-- Tambahkan lebih banyak mata kuliah COAS ... -->
-                            </div>
+                        <div class="">
+                            <label for="subject mb-3">Mata Kuliah COAS</label>
+                            <select class="product_select" id="subject" name="subject">
+                                <option data-display="Pilih Mata Kuliah COAS"></option>
+                                <option>Pemrograman Web</option>
+                                <option>PBO</option>
+                                <option>Visualisasi Data</option>
+                            </select>
                         </div>
                         <button type="button" class="action-button previous_button">Back</button>
                         <button type="button" class="next action-button">Continue</button>
@@ -97,10 +89,29 @@
                     <fieldset>
                         <h3>Jam Ketersediaan</h3>
                         <h6>Masukkan Jadwal Kuliah Anda Dengan Benar</h6>
-                        <div id="form-container">
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <style>
+                            .form-group {
+                                display: flex;
+                                align-items: center;
+                                gap: 20px;
+                            }
+
+                            .form-container {
+                                display: flex;
+                                flex-direction: column;
+                                gap: 10px;
+                            }
+
+                            .add-button {
+                                align-self: flex-end;
+                            }
+                        </style>
+                        <div class="form-container" id="form-container">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Hari</label>
-                                <select class="product_select">
+                                <label for="day">Hari</label>
+                                <select class="product_select" id="day" name="day">
                                     <option data-display="Pilih Hari"></option>
                                     <option>Senin</option>
                                     <option>Selasa</option>
@@ -109,21 +120,28 @@
                                     <option>Jumat</option>
                                     <option>Sabtu</option>
                                 </select>
-                                <label for="dropdown1">Jam Masuk</label>
-                                <select class="product_select" id="dropdown1">
+                    
+                                <label for="timein">Jam Masuk</label>
+                                <select class="product_select" name="timein" id="timein">
                                     <option data-display="Pilih Jam"></option>
-                                    <option>07.30</option>
-                                    <option>08.30</option>
-                                    <!-- ... Tambahkan opsi jam lainnya ... -->
+                                    <option value="07:30">07:30</option>
+                                    <option value="08:30">08:30</option>
+                                    <!-- Tambahkan opsi jam lainnya -->
                                 </select>
-                                <label for="dropdown2">Jam Keluar</label>
-                                <select class="product_select" id="dropdown2">
-                                    <option data-display="Pilihan 2"></option>
-                                    <option>Item 2A</option>
-                                    <option>Item 2B</option>
-                                    <option>Item 2C</option>
+                    
+                                <label for="timeout">Jam Keluar</label>
+                                <select class="product_select" name="timeout" id="timeout">
+                                    <option data-display="Pilih Jam"></option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="09:30">09:30</option>
+                                    <!-- Tambahkan opsi jam lainnya -->
                                 </select>
                             </div>
+                    
+                            <button id="add-button" class="btn btn-success add-button">+</button>
+                        </div>
+                    
+                        
                         </div>
                         <button type="button" class="action-button previous previous_button">Back</button>
                         <button type="button" class="next action-button">Continue</button>
@@ -131,20 +149,59 @@
                     <fieldset>
                         <div class="form-group fg_3">
                             <h2>Upload Transkrip Nilai</h2>
-                            <form action="upload.php" method="POST" enctype="multipart/form-data">
-                                <label for="image">Pilih Gambar:</label>
-                                <input type="file" name="image" accept="image/jpeg" id="image">
+                            
+                                <label for="transkrip">Upload Transkrip Nilai:</label>
+                                <input type="file" name="transkrip" accept="image/jpeg" id="transkrip">
                                 <br>
-                            </form>
+                                <button type="button" class="action-button previous previous_button">Back</button>
+                                <button type="submit" class="action-button">Finish</button>
+                            
                         </div>
-                        <button type="button" class="action-button previous previous_button">Back</button>
-                        <a href="#" class="action-button">Finish</a>
                     </fieldset>
+                    
                 </form>
             </section>
             <!-- END Multiform HTML -->
         </article>
     </main>
+    <script>
+        const addButton = document.getElementById('add-button');
+        const formContainer = document.getElementById('form-container');
+
+        addButton.addEventListener('click', () => {
+            event.preventDefault();
+            const newFormGroup = document.createElement('div');
+            newFormGroup.className = 'form-group';
+            newFormGroup.innerHTML = `
+                <label for="exampleInputEmail1">Hari</label>
+                <select class="product_select" id="day" name="day">
+                    <option data-display="Pilih Hari"></option>
+                    <option>Senin</option>
+                    <option>Selasa</option>
+                    <option>Rabu</option>
+                    <option>Kamis</option>
+                    <option>Jumat</option>
+                    <option>Sabtu</option>
+                </select>
+                <label for="dropdown1">Jam Masuk</label>
+                <select class="product_select" id="dropdown1">
+                    <option data-display="Pilih Jam"></option>
+                    <option>07.30</option>
+                    <option>08.30</option>
+                    <!-- ... Tambahkan opsi jam lainnya ... -->
+                </select>
+                <label for="dropdown2">Jam Keluar</label>
+                <select class="product_select" id="dropdown2">
+                    <option data-display="Pilihan 2"></option>
+                    <option>Item 2A</option>
+                    <option>Item 2B</option>
+                    <option>Item 2C</option>
+                </select>
+            `;
+
+            formContainer.appendChild(newFormGroup);
+        });
+    </script>
     <footer class="credit">Sistem Informasi COAS <a title="Awesome web design code & scripts" href="https://lpkia.ac.id" target="_blank">IDE LPKIA</a></footer>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
