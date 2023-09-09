@@ -82,9 +82,18 @@ class FormController extends Controller
             }
 
             return redirect()->back()->with('success', 'Data telah disimpan.');
+            $validatedData = $request->validate([
+                // ... (validasi lainnya)
+                'timein' => 'required|time',
+                'timeout' => 'required|time',
+            ]);
+        
+            // Menggabungkan jam masuk dan jam keluar
+            $timeRange = $validatedData['timein'] . ' - ' . $validatedData['timeout'];
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan data. Silakan coba lagi.');
         }
+        
     }
 
 

@@ -19,7 +19,7 @@ use App\Http\Controllers\FormController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::post('/schedule', [ScheduleController::class, 'index']);
+Route::get('/schedule', [ScheduleController::class, 'index']);
 
 
 Route::get('/student', [StudentController::class, 'index']);
@@ -27,10 +27,17 @@ Route::post('/form/store', [StudentController::class, 'store'])->name('students.
 
 
 Route::get('/subject', [SubjectController::class, 'index']);
+Route::post('/subject/store', [SubjectController::class, 'store']);
+Route::get('subject/create',[SubjectController::class,'create']);
+Route::delete('/subject/{id}', [SubjectController::class, 'destroy'])->name('subject.destroy');
+
 
 
 
 Route::get('/coas', [CoasController::class, 'index']);
+Route::post('/coas/store', [CoasController::class, 'store']);
+Route::get('coas/create',[CoasController::class,'create']);
+Route::delete('/coas/{id}', [CoasController::class, 'destroy'])->name('coas.destroy');
 
 
 

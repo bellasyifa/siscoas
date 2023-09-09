@@ -15,7 +15,7 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item active">Daftar Mahasiswa COAS</li>
                 </ol>
-              
+                <a href="/coas/create" class="btn btn-success mb-3">Tambah Data</a>
                                 <table id="datatablesSimple" class="table">
                                     <thead>
                                         <tr>
@@ -25,7 +25,8 @@
                                             <th>Kelas</th>
                                             <th>Mata Kuliah</th>
                                             <th>Hari</th>
-                                            <th>Jam</th>
+                                            <th>Jam Masuk</th>
+                                            <th>Jam Keluar</th>
                                             <th>Email</th>
                                         </tr>
                                     </thead>

@@ -20,7 +20,8 @@ class CreateCoasTable extends Migration
             $table->string('class');
             $table->string('subject');
             $table->string('day');
-            $table->time('time');
+            $table->time('timein');
+            $table->time('timeout');
             $table->string('email');
             $table->timestamps();
         });

@@ -26,7 +26,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.subject.create');
     }
 
     /**
@@ -37,7 +37,25 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            // Validasi data yang diterima dari request
+            $validatedData = $request->validate([
+                'semester' => 'required|string',
+                'subject_name' => 'required|string',
+                'class' => 'required|string',
+            ]);
+    
+            // Buat instance dari model Subject dan isi dengan data yang divalidasi
+            $subject = new Subject();
+            $subject->semester = $validatedData['semester'];
+            $subject->subject_name = $validatedData['subject_name'];
+            $subject->class = $validatedData['class'];
+    
+            // Simpan data ke dalam tabel
+            $subject->save();
+    
+            return redirect('/subject');
+        }
     }
 
     /**
@@ -82,6 +100,12 @@ class SubjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subject = Subject::findOrFail($id);
+
+        // Hapus data subjek
+        $subject->delete();
+    
+        return redirect('/subject')->with('success', 'Data subjek berhasil dihapus.');
+
     }
 }
