@@ -14,7 +14,7 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Mata Kuliah</li>
             </ol>
-            <a href="/subject/store" class="btn btn-success mb-3">Tambah Data</a>
+            <a href="/subject/create" class="btn btn-success mb-3">Tambah Data</a>
             <table id="datatablesSimple" class="table">
                 <thead>
                     <tr>

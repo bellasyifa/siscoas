@@ -38,34 +38,32 @@ class CoasController extends Controller
      */
     public function store(Request $request)
     {
-        {
-            $validatedData = $request->validate([
-                'nrp' => 'required|unique:coas',
-                'name' => 'required',
-                'class' => 'required',
-                'subject' => 'required',
-                'day' => 'required',
-                'timein' => 'required',
-                'timeout' => 'required',
-                'email' => 'required|email',
-            ]);
+        $validatedData = $request->validate([
+            'nrp' => 'required|unique:coas',
+            'name' => 'required',
+            'class' => 'required',
+            'subject' => 'required',
+            'day' => 'required',
+            'timein' => 'required',
+            'timeout' => 'required',
+            'email' => 'required|email',
+        ]);
     
-            // Buat entitas Coa baru
-            $coas = new Coas();
-            $coas->nrp = $validatedData['nrp'];
-            $coas->name = $validatedData['name'];
-            $coas->class = $validatedData['class'];
-            $coas->subject = $validatedData['subject'];
-            $coas->day = $validatedData['day'];
-            $coas->timein = $validatedData['timein'];
-            $coas->timeout = $validatedData['timeout'];
-            $coas->email = $validatedData['email'];
-            $coas->save();
+        // Buat entitas Coa baru
+        $coas = new Coas();
+        $coas->nrp = $validatedData['nrp'];
+        $coas->name = $validatedData['name'];
+        $coas->class = $validatedData['class'];
+        $coas->subject = $validatedData['subject'];
+        $coas->day = $validatedData['day'];
+        $coas->timein = $validatedData['timein'];
+        $coas->timeout = $validatedData['timeout'];
+        $coas->email = $validatedData['email'];
+        $coas->save();
     
-    
-            return redirect('/coas');
-        }
+        return redirect('/coas');
     }
+    
 
     /**
      * Display the specified resource.

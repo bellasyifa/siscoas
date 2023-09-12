@@ -30,16 +30,19 @@
                                             <th>Email</th>
                                         </tr>
                                     </thead>
-                                    @foreach ($coas as $coas)
+                                    @foreach ($coas as $coa)
                                         
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $coa->id }}</td>
+                                            <td>{{ $coa->nrp }}</td>
+                                            <td>{{ $coa->name }}</td>
+                                            <td>{{ $coa->class }}</td>
+                                            <td>{{ $coa->subject }}</td>
+                                            <td>{{ $coa->day }}</td>
+                                            <td>{{ $coa->timein }}</td>
+                                            <td>{{ $coa->timeout }}</td>
+                                            <td>{{ $coa->email }}</td>
                                         </tr>
                                     </tbody>
                                     @endforeach

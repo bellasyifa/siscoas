@@ -6,7 +6,7 @@
         <h1 class="card-title">Menambahkan Mata Kuliah COAS</h1>
     </div>
     <div class="card-body">
-        <form action="{{ route('subject.store') }}" method="POST">
+        <form action="/subject/store" method="POST">
             @csrf <!-- CSRF Token -->
 
             <div class="mb-3">

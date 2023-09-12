@@ -15,7 +15,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="class" class="form-label">Nama</label>
+                <label for="name" class="form-label">Nama</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Isi Nama Mahasiswa" required>
             </div>
 
@@ -25,28 +25,28 @@
             </div>
 
             <div class="mb-3">
-                <label for="class" class="form-label">Mata Kuliah</label>
-                <input type="text" name="subject_name" id="subject_name" class="form-control" placeholder="Isi Dengan Nama Mata Kuliah" required>
+                <label for="subject" class="form-label">Mata Kuliah</label>
+                <input type="text" name="subject" id="subject" class="form-control" placeholder="Isi Dengan Nama Mata Kuliah" required>
             </div>
 
             <div class="mb-3">
-                <label for="class" class="form-label">Hari</label>
-                <input type="text" name="day" id="class" class="form-control" placeholder="Isi Dengan Hari Matkul Tersebut Berlangsung" required>
+                <label for="day" class="form-label">Hari</label>
+                <input type="text" name="day" id="day" class="form-control" placeholder="Isi Dengan Hari Matkul Tersebut Berlangsung" required>
             </div>
 
             <div class="mb-3">
-                <label for="class" class="form-label">Jam Masuk</label>
-                <input type="time" name="timein" id="timein" class="form-control" placeholder="Isi Dengan Jam Masuk Matkul Tersebut" required>
+                <label for="timein" class="form-label">Jam Masuk</label>
+                <input type="time" name="timein" id="timein" class="form-control" required>
             </div>
 
             <div class="mb-3">
-                <label for="class" class="form-label">Jam Keluar</label>
-                <input type="time" name="timeout" id="timeout" class="form-control" placeholder="Isi Dengan Jam Keluar Matkul Tersebut" required>
+                <label for="timeout" class="form-label">Jam Keluar</label>
+                <input type="time" name="timeout" id="timeout" class="form-control" required>
             </div>
 
             <div class="mb-3">
-                <label for="class" class="form-label">Email</label>
-                <input type="text" name="email" id="email" class="form-control" placeholder="Isi Dengan Email Mahasiswa" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Isi Dengan Email Mahasiswa" required>
             </div>
 
             <button type="submit" class="btn btn-success">Tambahkan</button>
