@@ -7,6 +7,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CoasController;
 use App\Http\Controllers\FormController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,12 +20,15 @@ use App\Http\Controllers\FormController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'index']);
 Route::get('/schedule', [ScheduleController::class, 'index']);
 
 
-Route::get('/student', [StudentController::class, 'index']);
-Route::post('/form/store', [StudentController::class, 'store'])->name('students.store');
+Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+
+Route::post('/student/store', [StudentController::class, 'store'])->name('students.store');
+Route::get('student/create',[StudentController::class,'create']);
+Route::delete('/student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 
 
 Route::get('/subject', [SubjectController::class, 'index']);
@@ -45,3 +50,14 @@ Route::delete('/coas/{id}', [CoasController::class, 'destroy'])->name('coas.dest
 Route::get('/form', [FormController::class, 'index']);
 Route::post('/submission/store', [FormController::class, 'store'])->name('submit.store');
 
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+   
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    Route::resource('products','ProductController');
+});

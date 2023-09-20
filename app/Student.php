@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $fillable = [
-        'nrp','email','name','class','day','timein','timeout','subject',
+        'nrp',
+        'name',
+        'class',
+        'subject',
+        'day',
+        'timein',
+        'timeout',
+        'email',
+        'file', 
     ];
 }

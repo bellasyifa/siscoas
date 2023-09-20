@@ -23,9 +23,9 @@ class CreateStudentsTable extends Migration
             $table->time('timein');
             $table->time('timeout');
             $table->string('email');
-            $table->string('transkrip');
-
+            $table->string('file');
             $table->timestamps();
+
         });
     }
 

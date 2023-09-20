@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student;
 
-class StudentController extends Controller
+class StudentdashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('admin.student.index',compact('students'));
+        //
     }
 
     /**
@@ -25,7 +23,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('admin.student.create');
+        //
     }
 
     /**
@@ -36,32 +34,8 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $file = $request->file('file');
-        $filePath = $file->store('uploads');
-        
-
-        $student = new Student();
-        $student->nrp = $request->input('nrp');
-        $student->name = $request->input('name');
-        $student->class = $request->input('class');
-        $student->subject = $request->input('subject');
-        $student->day = $request->input('day');
-        $student->timein = $request->input('timein');
-        $student->timeout = $request->input('timeout');
-        $student->email = $request->input('email');
-        $student->file = $filePath; // Sesuaikan dengan kolom yang sesuai dalam model Student Anda
-        $student->save();
-        
-        if($student->save()){
-
-            return redirect()->route('student.index')->with('success', 'Data telah disimpan');
-        }else{
-            return redirect()->route('student.index')->with('error', 'gagal');
-
-        }
+        //
     }
-    
 
     /**
      * Display the specified resource.
@@ -105,11 +79,6 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $student = Student::findOrFail($id);
-
-        // Hapus data subjek
-        $student->delete();
-    
-        return redirect('/student')->with('success', 'Data subjek berhasil dihapus.');
+        //
     }
 }
