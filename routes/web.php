@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // Route::get('/', [HomeController::class, 'index']);
-Route::get('/schedule', [ScheduleController::class, 'index']);
+Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule.index');
 
 
 Route::get('/student', [StudentController::class, 'index'])->name('student.index');
@@ -31,7 +31,7 @@ Route::get('student/create',[StudentController::class,'create']);
 Route::delete('/student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 
 
-Route::get('/subject', [SubjectController::class, 'index']);
+Route::get('/subject', [SubjectController::class, 'index'])->name('subject.index');
 Route::post('/subject/store', [SubjectController::class, 'store']);
 Route::get('subject/create',[SubjectController::class,'create']);
 Route::delete('/subject/{id}', [SubjectController::class, 'destroy'])->name('subject.destroy');
@@ -39,7 +39,7 @@ Route::delete('/subject/{id}', [SubjectController::class, 'destroy'])->name('sub
 
 
 
-Route::get('/coas', [CoasController::class, 'index']);
+Route::get('/coas', [CoasController::class, 'index'])->name('coas.index');
 Route::post('/coas/store', [CoasController::class, 'store']);
 Route::get('coas/create',[CoasController::class,'create']);
 Route::delete('/coas/{id}', [CoasController::class, 'destroy'])->name('coas.destroy');
@@ -47,15 +47,16 @@ Route::delete('/coas/{id}', [CoasController::class, 'destroy'])->name('coas.dest
 
 
 
-Route::get('/form', [FormController::class, 'index']);
+Route::get('/form', [FormController::class, 'index'])->name('form.index');
 Route::post('/submission/store', [FormController::class, 'store'])->name('submit.store');
+Route::get('/download/{fileName}', [StudentController::class, 'downloadFile'])->name('download.file');
+
 
 
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-   
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');

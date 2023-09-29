@@ -46,28 +46,39 @@
                                             <th>Jam Masuk</th>
                                             <th>Jam Keluar</th>
                                             <th>Email</th>
+                                            <th>Transkrip</th>
                                             <th>Action</th>
                                        
                                         </tr>
                                     </thead>
-                                    @foreach ($students as $student)
-                                        
-                                    <tbody>
-                                        <tr>
-                                            <td>{{ $student->id }}</td>
-                                            <td>{{ $student->nrp }}</td>
-                                            <td>{{ $student->name }}</td>
-                                            <td>{{ $student->class }}</td>
-                                            <td>{{ $student->subject }}</td>
-                                            <td>{{ $student->day }}</td>
-                                            <td>{{ $student->timein }}</td>
-                                            <td>{{ $student->timeout }}</td>
-                                            <td>{{ $student->email }}</td>
-                                            <td><button class="btn btn-danger">Hapus</button></td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                    @endforeach
+                                    <!-- ... kode sebelumnya ... -->
+
+@foreach ($students as $student)
+<tbody>
+    <tr>
+        <td>{{ $student->id }}</td>
+        <td>{{ $student->nrp }}</td>
+        <td>{{ $student->name }}</td>
+        <td>{{ $student->class }}</td>
+        <td>{{ $student->subject }}</td>
+        <td>{{ $student->day }}</td>
+        <td>{{ $student->timein }}</td>
+        <td>{{ $student->timeout }}</td>
+        <td>{{ $student->email }}</td>
+        <td>
+            @if($student->file)
+                <a href="{{ asset('uploads/' . $student->file) }}" target="_blank">Lihat File</a>
+            @else
+                Tidak Ada File
+            @endif
+        </td>
+        <td><button class="btn btn-danger">Hapus</button></td>
+    </tr>
+</tbody>
+@endforeach
+
+<!-- ... kode selanjutnya ... -->
+
                                 </table>   
                             </div>    
         </main>

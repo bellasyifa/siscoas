@@ -1,6 +1,6 @@
-@extends('layouts.app')
 
-@section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -21,7 +21,7 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror 
                             </div>
                         </div>
 
@@ -70,4 +70,4 @@
         </div>
     </div>
 </div>
-@endsection
+

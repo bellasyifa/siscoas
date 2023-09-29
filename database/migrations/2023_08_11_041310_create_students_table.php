@@ -18,6 +18,7 @@ class CreateStudentsTable extends Migration
             $table->string('nrp')->unique();
             $table->string('name');
             $table->string('class');
+            $table->string('subject_coas');
             $table->string('subject');
             $table->string('day');
             $table->time('timein');

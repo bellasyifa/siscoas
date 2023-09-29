@@ -35,171 +35,109 @@
         
         <article>
             <!-- Start Multiform HTML -->
-            <section class="multi_step_form">
-                <form action="{{ route('submit.store') }}"  id="msform" method="post">
-                    @csrf
-                    <div class="tittle">
-                        <h2>Pengajuan COAS</h2>
-                        <p>Pastikan Mengisi Data Dengan Benar</p>
-                    </div>
-                    <!-- progressbar -->
-                    <ul id="progressbar">
-                        <li class="active">Data Diri</li>
-                        <li>Waktu Ketersediaan</li>
-                        <li>Transkrip Nilai</li>
-                    </ul>
-                    <!-- fieldsets -->
-                    <fieldset>
-                        <h3>Data Diri</h3>
-                        <h6>Lengkapi Data Diri Anda</h6>
-                        <div class="form-group fg_2 mb-3">
-                            <label for="nrp">NRP</label>
-                            <input type="text" class="form-control" placeholder="Masukkan NRP Anda" id="nrp" name="nrp">
+            <div class="card">
+                <div class="card-header">
+                    Add a New Student
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+            
+                        <div class="mb-3">
+                            <label for="nrp" class="form-label">NRP</label>
+                            <input type="text" class="form-control" id="nrp" name="nrp" required>
                         </div>
-                        <div class="form-group fg_2 mb-3">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" class="form-control" placeholder="Isi Dengan Nama Lengkap" id="name" name="name">
+            
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
-                        <div class="form-group fg_2 mb-3">
-                            <label for="email">Email</label>
-                            <input type="text" class="form-control" placeholder="Isi Dengan Email Anda" id="email" name="email">
-                        </div>
-                        <div class="">
-                            <label for="class mb-3">Kelas</label>
-                            <select class="product_select" id="class" name="class">
-                                <option data-display="Pilih Kelas"></option>
-                                <option>2IF01</option>
-                                <option>2IF02</option>
-                                <option>2IF03</option>
+
+    
+                        <div class="mb-3">
+                            <label for="class" class="form-label">Class</label>
+                            <select class="form-select w-100" id="class" name="class" required>
+                                <option value="2IF">2IF</option>
+                                <option value="3IF">3IF</option>
+                                <option value="4IF">4IF</option>
                             </select>
                         </div>
-                       
-                        <div class="">
-                            <label for="subject mb-3">Mata Kuliah COAS</label>
-                            <select class="product_select" id="subject" name="subject">
-                                <option data-display="Pilih Mata Kuliah COAS"></option>
-                                <option>Pemrograman Web</option>
-                                <option>PBO</option>
-                                <option>Visualisasi Data</option>
-                            </select>
-                        </div>
-                        <button type="button" class="action-button previous_button">Back</button>
-                        <button type="button" class="next action-button">Continue</button>
-                    </fieldset>
-                    <fieldset>
-                        <h3>Jam Ketersediaan</h3>
-                        <h6>Masukkan Jadwal Kuliah Anda Dengan Benar</h6>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <style>
-                            .form-group {
-                                display: flex;
-                                align-items: center;
-                                gap: 20px;
-                            }
-
-                            .form-container {
-                                display: flex;
-                                flex-direction: column;
-                                gap: 10px;
-                            }
-
-                            .add-button {
-                                align-self: flex-end;
-                            }
-                        </style>
-                        <div class="form-container" id="form-container">
-                            <div class="form-group">
-                                <label for="day">Hari</label>
-                                <select class="product_select" id="day" name="day">
-                                    <option data-display="Pilih Hari"></option>
-                                    <option>Senin</option>
-                                    <option>Selasa</option>
-                                    <option>Rabu</option>
-                                    <option>Kamis</option>
-                                    <option>Jumat</option>
-                                    <option>Sabtu</option>
-                                </select>
-                    
-                                <label for="timein">Jam Masuk</label>
-                                <select class="product_select" name="timein" id="timein">
-                                    <option data-display="Pilih Jam"></option>
-                                    <option value="07:30">07:30</option>
-                                    <option value="08:30">08:30</option>
-                                    <!-- Tambahkan opsi jam lainnya -->
-                                </select>
-                    
-                                <label for="timeout">Jam Keluar</label>
-                                <select class="product_select" name="timeout" id="timeout">
-                                    <option data-display="Pilih Jam"></option>
-                                    <option value="08:30">08:30</option>
-                                    <option value="09:30">09:30</option>
-                                    <!-- Tambahkan opsi jam lainnya -->
-                                </select>
-                            </div>
-                    
-                            <button id="add-button" class="btn btn-success add-button">+</button>
-                        </div>
-                    
+            
                         
+        <label for="subject_coas" class="form-label mr-2">Pilih Matkul COAS</label>
+        <select class="form-select w-100" id="class" name="class" required>
+            <option value="PBO">PBO</option>
+            <option value="P Web 1">P Web 1</option>
+            <option value="P Web 2">P Web 2</option>
+            <option value="Basis Data">Basis Data</option>
+        </select>
+                       <!-- Dynamic form fields (Day, Subject, Time In, Time Out) -->
+<div class="form-inline mb-3" id="dynamic-form-fields">
+    <!-- Initial form field -->
+    <div class="form-group">
+        <label for="day" class="form-label mr-2">Day</label>
+        <select class="form-select mr-2" id="day" name="day" required>
+            <option value="Senin">Senin</option>
+            <option value="Selasa">Selasa</option>
+            <option value="Rabu">Rabu</option>
+            <option value="Kamis">Kamis</option>
+            <option value="Jumat">Jumat</option>
+            <option value="Sabtu">Sabtu</option>
+        </select>
+
+     
+            <label for="subject" class="form-label mr-2">Matkul</label>
+            <input type="text" class="form-control mr-2" id="subject" name="subject" required>
+     
+
+        <label for="timein" class="form-label mr-2">Time In</label>
+        <input type="time" class="form-control mr-2" id="timein" name="timein" required>
+
+        <label for="timeout" class="form-label mr-2">Time Out</label>
+        <input type="time" class="form-control mr-2" id="timeout" name="timeout" required>
+    </div>
+</div>
+
+<!-- "Tambah" button to add more form fields -->
+<button type="button" class="btn btn-primary" id="add-form-field">Tambah</button>
+
+
+            
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
-                        <button type="button" class="action-button previous previous_button">Back</button>
-                        <button type="button" class="next action-button">Continue</button>
-                    </fieldset>
-                    <fieldset>
-                        <div class="form-group fg_3">
-                            <h2>Upload Transkrip Nilai</h2>
-                            
-                                <label for="transkrip">Upload Transkrip Nilai:</label>
-                                <input type="file" name="transkrip" accept="image/jpeg" id="transkrip">
-                                <br>
-                                <button type="button" class="action-button previous previous_button">Back</button>
-                                <button type="submit" class="action-button">Finish</button>
-                            
+            
+                        <div class="mb-3">
+                            <label for="file" class="form-label">File</label>
+                            <input type="file" class="form-control" id="file" name="file" required>
                         </div>
-                    </fieldset>
-                    
-                </form>
-            </section>
-            <!-- END Multiform HTML -->
+            
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            
         </article>
     </main>
     <script>
-        const addButton = document.getElementById('add-button');
-        const formContainer = document.getElementById('form-container');
-
-        addButton.addEventListener('click', () => {
-            event.preventDefault();
-            const newFormGroup = document.createElement('div');
-            newFormGroup.className = 'form-group';
-            newFormGroup.innerHTML = `
-                <label for="exampleInputEmail1">Hari</label>
-                <select class="product_select" id="day" name="day">
-                    <option data-display="Pilih Hari"></option>
-                    <option>Senin</option>
-                    <option>Selasa</option>
-                    <option>Rabu</option>
-                    <option>Kamis</option>
-                    <option>Jumat</option>
-                    <option>Sabtu</option>
-                </select>
-                <label for="dropdown1">Jam Masuk</label>
-                <select class="product_select" id="dropdown1">
-                    <option data-display="Pilih Jam"></option>
-                    <option>07.30</option>
-                    <option>08.30</option>
-                    <!-- ... Tambahkan opsi jam lainnya ... -->
-                </select>
-                <label for="dropdown2">Jam Keluar</label>
-                <select class="product_select" id="dropdown2">
-                    <option data-display="Pilihan 2"></option>
-                    <option>Item 2A</option>
-                    <option>Item 2B</option>
-                    <option>Item 2C</option>
-                </select>
-            `;
-
-            formContainer.appendChild(newFormGroup);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tambahkan event listener untuk tombol "Tambah"
+            document.getElementById('add-form-field').addEventListener('click', function() {
+                // Dapatkan elemen kontainer untuk form dinamis
+                var dynamicFormFields = document.getElementById('dynamic-form-fields');
+    
+                // Salin elemen pertama dari form dinamis untuk menggandakannya
+                var clonedForm = dynamicFormFields.firstElementChild.cloneNode(true);
+    
+                // Reset nilai input pada form yang baru
+                clonedForm.querySelectorAll('select, input').forEach(function(input) {
+                    input.value = '';
+                });
+    
+                // Tambahkan form yang baru ke dalam kontainer form dinamis
+                dynamicFormFields.appendChild(clonedForm);
+            });
         });
     </script>
     <footer class="credit">Sistem Informasi COAS <a title="Awesome web design code & scripts" href="https://lpkia.ac.id" target="_blank">IDE LPKIA</a></footer>

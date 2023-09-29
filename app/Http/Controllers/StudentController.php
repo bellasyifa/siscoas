@@ -46,6 +46,7 @@ class StudentController extends Controller
         $student->name = $request->input('name');
         $student->class = $request->input('class');
         $student->subject = $request->input('subject');
+        $student->subject_coas = $request->input('subject');
         $student->day = $request->input('day');
         $student->timein = $request->input('timein');
         $student->timeout = $request->input('timeout');
@@ -62,6 +63,17 @@ class StudentController extends Controller
         }
     }
     
+    public function downloadFile($fileName)
+{
+    $filePath = public_path('uploads/' . $fileName);
+
+    if (file_exists($filePath)) {
+        return response()->download($filePath);
+    } else {
+        abort(404, 'File not found');
+    }
+}
+
 
     /**
      * Display the specified resource.
